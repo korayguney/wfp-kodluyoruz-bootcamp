@@ -8,5 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Hibernate-All required jars1" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.16" level="project" />
   </component>
 </module>

@@ -1,16 +1,24 @@
 package dev.patika.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Vehicle {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Vehicle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int year;
     private String model;
     private String plate;
 
+    @ManyToOne
     private Customer customer;
 
+    @ManyToMany
     private List<Accident> accidents = new ArrayList<>();
 
     public Vehicle(int year, String model, String plate) {
@@ -60,6 +68,10 @@ public abstract class Vehicle {
 
     public void setAccidents(List<Accident> accidents) {
         this.accidents = accidents;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

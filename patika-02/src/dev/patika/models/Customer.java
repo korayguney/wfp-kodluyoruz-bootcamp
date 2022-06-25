@@ -1,14 +1,21 @@
 package dev.patika.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// POJO --> Plain Old Java Object
+@Entity
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String address;
     private long ssid;
 
+    @OneToMany(mappedBy = "customer")
     private List<Vehicle> vehicleList = new ArrayList<>();
 
     public Customer(String name, String address, long ssid) {
@@ -50,6 +57,10 @@ public class Customer {
 
     public void setVehicleList(List<Vehicle> vehicleList) {
         this.vehicleList = vehicleList;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

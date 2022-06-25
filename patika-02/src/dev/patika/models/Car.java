@@ -1,5 +1,8 @@
 package dev.patika.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Car extends Vehicle {
     private String color;
 
