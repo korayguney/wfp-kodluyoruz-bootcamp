@@ -1,29 +1,74 @@
 package dev.patika.clients;
 
+import dev.patika.controller.CustomerController;
 import dev.patika.models.*;
 import dev.patika.utils.EntityManagerUtils;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Iterator;
+import java.util.List;
 
 public class TestInsuranceClient {
     public static void main(String[] args) {
 
-        saveTestData();
+        if (checkTestData() == 0) {
+            saveTestData();
+        }
+
+        CustomerController customerController = new CustomerController();
+
+        Customer newCustomer = new Customer("Alex De Souza", "Brasil",4444444L);
+        customerController.saveCustomer(newCustomer);
+
+        List<Customer> customerList = customerController.findAllCustomers();
+
+        for (Customer customer : customerList) {
+            System.out.println(customer);
+        }
+
+       // System.out.println("------------------------");
+
+       // for (int i = 0; i < customerList.size(); i++) {
+       //     System.out.println(customerList.get(i));
+       // }
+
+       // System.out.println("------------------------");
+
+       // Iterator<Customer> customerIterator = customerList.iterator();
+       // while (customerIterator.hasNext()) {
+       //     System.out.println(customerIterator.next());
+       // }
+       // System.out.println("------------------------");
+
+       // customerList.forEach(c -> System.out.println(c));
+
+       // System.out.println("------------------------");
+
+       // customerList.forEach(System.out::println);
+
+       // System.out.println(customerController.findCustomerById(1));
+
+
+    }
+
+    private static int checkTestData() {
+        EntityManager em = EntityManagerUtils.getEntityManager("mysqlPU");
+        return  em.createQuery("from Customer", Customer.class).getResultList().size();
     }
 
     private static void saveTestData() {
 
-        Customer customer1 = new Customer("Koray Guney", "Istanbul", 111111111L);
+        Customer customer1 = new Customer("Koray Guney", "Ankara", 111111111L);
         Customer customer2 = new Customer("Ali Veli", "Adana", 2222222222L);
         Customer customer3 = new Customer("Ayse Gunes", "Izmir", 333333333L);
 
-        Vehicle car1 = new Car(2020, "Mitsibushi Lancer", "34BH4545","Black");
-        Vehicle car2 = new Car(2015, "Fiat 300L", "25HG453","Yellow");
-        Vehicle moto1 = new Motorcycle(2016, "Suzuki", "65HG43",120.0);
-        Vehicle moto2 = new Motorcycle(2021, "Yamaha", "05G453",255.5);
-        Vehicle moto3 = new Motorcycle(2020, "Harley Davidson", "01TT3321",420.0);
+        Vehicle car1 = new Car(2020, "Mitsibushi Lancer", "34BH4545", "Black");
+        Vehicle car2 = new Car(2015, "Fiat 300L", "25HG453", "Yellow");
+        Vehicle moto1 = new Motorcycle(2016, "Suzuki", "65HG43", 120.0);
+        Vehicle moto2 = new Motorcycle(2021, "Yamaha", "05G453", 255.5);
+        Vehicle moto3 = new Motorcycle(2020, "Harley Davidson", "01TT3321", 420.0);
 
         car1.setCustomer(customer1);
         car2.setCustomer(customer2);
