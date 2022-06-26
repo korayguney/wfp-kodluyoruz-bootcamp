@@ -15,7 +15,7 @@ public class Vehicle {
     private String model;
     private String plate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
 
     @ManyToMany

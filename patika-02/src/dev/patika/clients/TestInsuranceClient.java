@@ -31,9 +31,9 @@ public class TestInsuranceClient {
 
         Customer foundCustomer = customerList.get(0);
 
-        List<Vehicle> vehicleList = customerController.getcustomerVehicleList(foundCustomer);
+       // List<Vehicle> vehicleList = customerController.getcustomerVehicleList(foundCustomer);
 
-        for (Vehicle vehicle : vehicleList) {
+        for (Vehicle vehicle : foundCustomer.getVehicleList()) {
             System.out.println(vehicle);
         }
 

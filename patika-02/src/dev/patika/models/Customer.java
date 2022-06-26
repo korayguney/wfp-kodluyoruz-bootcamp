@@ -15,7 +15,7 @@ public class Customer {
     private String address;
     private long ssid;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Vehicle> vehicleList = new ArrayList<>();
 
     public Customer(String name, String address, long ssid) {
