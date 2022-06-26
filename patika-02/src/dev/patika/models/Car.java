@@ -11,6 +11,8 @@ public class Car extends Vehicle {
         this.color = color;
     }
 
+    public Car(){}
+
     public Car(String color) {
         this.color = color;
     }

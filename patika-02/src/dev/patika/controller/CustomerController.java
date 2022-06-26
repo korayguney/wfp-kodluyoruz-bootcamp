@@ -1,6 +1,7 @@
 package dev.patika.controller;
 
 import dev.patika.models.Customer;
+import dev.patika.models.Vehicle;
 import dev.patika.service.CustomerService;
 
 import java.util.List;
@@ -21,4 +22,23 @@ public class CustomerController {
         customerService.saveToDatabase(customer);
     }
 
+    public void deleteCustomer(Customer customer) {
+        customerService.deleteFromDatabase(customer);
+    }
+
+    public void deleteCustomer(int id) {
+        customerService.deleteFromDatabase(id);
+    }
+
+    public void deleteCustomerWithPrimaryId(int id) {
+        customerService.deleteCustomerWithId(id);
+    }
+
+    public void updateCustomer(Customer customer, int id) {
+        customerService.updateOnDatabase(customer, id);
+    }
+
+    public List<Vehicle> getcustomerVehicleList(Customer customer) {
+        return customerService.getCustomerVehicleList(customer);
+    }
 }

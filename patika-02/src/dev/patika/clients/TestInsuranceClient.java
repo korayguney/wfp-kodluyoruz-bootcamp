@@ -19,14 +19,31 @@ public class TestInsuranceClient {
 
         CustomerController customerController = new CustomerController();
 
-        Customer newCustomer = new Customer("Alex De Souza", "Brasil",4444444L);
-        customerController.saveCustomer(newCustomer);
+       // Customer newCustomer = new Customer("Alex De Souza", "Brasil",4444444L);
+       // customerController.saveCustomer(newCustomer);
+
+     //   customerController.deleteCustomer(customerList.get(4));
+       // customerController.deleteCustomer(5);
+    //    customerController.deleteCustomerWithPrimaryId(2);
+
 
         List<Customer> customerList = customerController.findAllCustomers();
 
-        for (Customer customer : customerList) {
-            System.out.println(customer);
+        Customer foundCustomer = customerList.get(0);
+
+        List<Vehicle> vehicleList = customerController.getcustomerVehicleList(foundCustomer);
+
+        for (Vehicle vehicle : vehicleList) {
+            System.out.println(vehicle);
         }
+
+       // foundCustomer.setSsid(55555555555L);
+       // customerController.updateCustomer(foundCustomer, foundCustomer.getId());
+
+       // for (Customer customer : customerList) {
+       //     System.out.println(customer);
+       // }
+
 
        // System.out.println("------------------------");
 

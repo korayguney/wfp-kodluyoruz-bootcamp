@@ -19,6 +19,8 @@ public class Motorcycle extends Vehicle {
         this.enginePower = enginePower;
     }
 
+    public Motorcycle(){}
+
     public double getEnginePower() {
         return enginePower;
     }
