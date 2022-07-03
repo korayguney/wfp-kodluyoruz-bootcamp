@@ -68,6 +68,7 @@ public class HelloController {
 
     // http://localhost:8080/sum?num1=10&num2=20
     // output ---->   10+20=30
+    // test
     @GetMapping("/calculate/{operation}{num1}{num2}")
     public String calculate(@RequestParam String operation,int num1, int num2) {
         int result = 0;
@@ -81,8 +82,4 @@ public class HelloController {
                 return num1+"/"+num2+"="+result;
 
     }
-        return null;
-
-    }
-
 }
