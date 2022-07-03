@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="patika-01" target="8" />
+      <module name="patika-01" target="1.8" />
       <module name="patika-03" target="1.8" />
       <module name="wfp-kodluyoruz-bootcamp" target="1.5" />
     </bytecodeTargetLevel>
