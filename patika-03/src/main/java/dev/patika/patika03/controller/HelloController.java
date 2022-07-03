@@ -24,35 +24,35 @@ public class HelloController {
         return new StringResponse("Hello " + name + " , from " + year);
     }
 
-    @RequestMapping( value = {"/hello/{name}","/hello/{name}/{year}"})
+    @RequestMapping(value = {"/hello/{name}", "/hello/{name}/{year}"})
     @ResponseStatus(value = HttpStatus.I_AM_A_TEAPOT, reason = "There is an error during request...")
     public String sayMyName(@PathVariable(required = false) String name, @PathVariable(required = false) int year) {
         return "Hello " + name + " , from " + year;
     }
 
     @GetMapping("/greeting/{id}")
-    public ResponseEntity<String> greeting(@RequestHeader("Cookie") String cookie,  @PathVariable int id) {
+    public ResponseEntity<String> greeting(@RequestHeader("Cookie") String cookie, @PathVariable int id) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("my-custom-header", "Test header");
 
         return new ResponseEntity<>("Id : " + id + " , cookie: " + cookie, headers, HttpStatus.OK);
         //return ResponseEntity.ok().body("Id : " + id + " , cookie: " + cookie);
-       // return ResponseEntity.status(HttpStatus.ACCEPTED).body("Id : " + id + " , cookie: " + cookie);
+        // return ResponseEntity.status(HttpStatus.ACCEPTED).body("Id : " + id + " , cookie: " + cookie);
     }
 
     @GetMapping("/custom")
     public void customHeader(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String cookie  = request.getHeader("cookie");
+        String cookie = request.getHeader("cookie");
 
         response.setHeader("custom-header", "Koray");
-        response.setHeader("cookie" , cookie +"patikadev");
+        response.setHeader("cookie", cookie + "patikadev");
         response.setStatus(201);
         response.getWriter().println("Hello World...");
     }
 
     @GetMapping("/students")
-    public ResponseEntity<List<Student>> getAllStudent(){
+    public ResponseEntity<List<Student>> getAllStudent() {
         List<Student> students = new ArrayList<>();
         students.add(new Student(1, "Koray Guney", 38));
         students.add(new Student(2, "Ali Veli", 23));
@@ -62,24 +62,30 @@ public class HelloController {
     }
 
     @GetMapping("*")
-    public ResponseEntity<String> fallBackMethod(){
+    public ResponseEntity<String> fallBackMethod() {
         return new ResponseEntity<>("There is no endpoint like that!...", HttpStatus.NOT_FOUND);
     }
 
     // http://localhost:8080/sum?num1=10&num2=20
     // output ---->   10+20=30
-    // test
-    @GetMapping("/calculate/{operation}{num1}{num2}")
-    public String calculate(@RequestParam String operation,int num1, int num2) {
-        int result = 0;
-        switch (operation){
+    @GetMapping("/calculate/{operation}")
+    public String calculate(@PathVariable String operation, @RequestParam int num1, @RequestParam int num2) {
+        double result = 0;
+        switch (operation) {
             case "sum":
                 result = num1 + num2;
-                return num1+"+"+num2+"="+result;
-
+                return num1 + "+" + num2 + "=" + result;
+            case "substract":
+                result = num1 - num2;
+                return num1 + "-" + num2 + "=" + result;
+            case "multiply":
+                result = num1 * num2;
+                return num1 + "*" + num2 + "=" + result;
             case "divide":
-                result = num1/num2;
-                return num1+"/"+num2+"="+result;
-
+                result = num1 / num2;
+                return num1 + "/" + num2 + "=" + result;
+            default:
+                return "There is no calculation";
+        }
     }
 }
