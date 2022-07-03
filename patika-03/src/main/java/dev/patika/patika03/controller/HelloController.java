@@ -2,6 +2,7 @@ package dev.patika.patika03.controller;
 
 import dev.patika.patika03.StringResponse;
 import dev.patika.patika03.Student;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
 public class HelloController {
 
+    @Value("${developer.name:Koray Guney}")
+    private String developerName;
+
+    @Value("${server.port}")
+    private int serverPort;
+
+
+    List<Student> students = new ArrayList<>();
+
     // endpoint
     //@RequestMapping(value = "/hello", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
     @RequestMapping(value = "/hello")
     public StringResponse sayHello(@RequestParam(required = false) String name, @RequestParam int year) {
-        return new StringResponse("Hello " + name + " , from " + year);
+        return new StringResponse("Hello " + name + " , from " + year + ", developer of the project: " + developerName
+        + ", Server Port : " + serverPort);
     }
 
     @RequestMapping(value = {"/hello/{name}", "/hello/{name}/{year}"})
@@ -53,13 +66,25 @@ public class HelloController {
 
     @GetMapping("/students")
     public ResponseEntity<List<Student>> getAllStudent() {
-        List<Student> students = new ArrayList<>();
         students.add(new Student(1, "Koray Guney", 38));
         students.add(new Student(2, "Ali Veli", 23));
         students.add(new Student(3, "Hasan Huseyin", 27));
 
         return ResponseEntity.ok().body(students);
     }
+
+    @PostMapping("/students")
+    public ResponseEntity<List<Student>> addStudent(@RequestBody List<Student> students) {
+       // for (Student student : students) {
+       //     this.students.add(student);
+       // }
+
+        students.stream().collect(Collectors.toCollection(() -> this.students));
+
+        //this.students.addAll(students);
+        return ResponseEntity.ok().body(this.students);
+    }
+
 
     @GetMapping("*")
     public ResponseEntity<String> fallBackMethod() {
