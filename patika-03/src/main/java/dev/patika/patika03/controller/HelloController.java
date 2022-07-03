@@ -1,5 +1,7 @@
-package dev.patika.patika03;
+package dev.patika.patika03.controller;
 
+import dev.patika.patika03.StringResponse;
+import dev.patika.patika03.Student;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class HelloController {
 
     // endpoint
@@ -60,5 +63,16 @@ public class HelloController {
         return ResponseEntity.ok().body(students);
     }
 
+    @GetMapping("*")
+    public ResponseEntity<String> fallBackMethod(){
+        return new ResponseEntity<>("There is no endpoint like that!...", HttpStatus.NOT_FOUND);
+    }
+
+    // http://localhost:8080/sum?num1=10&num2=20
+    // output ---->   10+20=30
+    @GetMapping("/calculate/{operation}")
+    public String calculate(String operation, int num1, int num2) {
+        return null;
+    }
 
 }

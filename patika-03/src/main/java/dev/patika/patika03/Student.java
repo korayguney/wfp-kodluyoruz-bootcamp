@@ -1,5 +1,8 @@
 package dev.patika.patika03;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
     private int id;
     private String name;
@@ -10,6 +13,8 @@ public class Student {
         this.name = name;
         this.age = age;
     }
+
+    public Student(){}
 
     public int getId() {
         return id;
