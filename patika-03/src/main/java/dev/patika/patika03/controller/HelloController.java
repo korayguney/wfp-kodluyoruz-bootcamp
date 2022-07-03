@@ -4,13 +4,11 @@ import dev.patika.patika03.StringResponse;
 import dev.patika.patika03.Student;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,9 +69,17 @@ public class HelloController {
     // http://localhost:8080/sum?num1=10&num2=20
     // output ---->   10+20=30
     // test
-    @GetMapping("/calculate/{operation}")
-    public String calculate(String operation, int num1, int num2) {
-        return null;
-    }
+    @GetMapping("/calculate/{operation}{num1}{num2}")
+    public String calculate(@RequestParam String operation,int num1, int num2) {
+        int result = 0;
+        switch (operation){
+            case "sum":
+                result = num1 + num2;
+                return num1+"+"+num2+"="+result;
 
+            case "divide":
+                result = num1/num2;
+                return num1+"/"+num2+"="+result;
+
+    }
 }
