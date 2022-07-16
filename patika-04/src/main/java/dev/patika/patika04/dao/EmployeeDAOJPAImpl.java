@@ -21,6 +21,7 @@ public class EmployeeDAOJPAImpl implements EmployeeDAO<Employee>{
     @Override
     @Transactional(readOnly = true)
     public List<Employee> findAll() {
+        System.out.println("EmployeeDAOJPAImpl is used...");
         return entityManager.createQuery("from Employee", Employee.class).getResultList();
     }
 

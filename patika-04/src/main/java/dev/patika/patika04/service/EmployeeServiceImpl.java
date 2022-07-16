@@ -4,6 +4,7 @@ import dev.patika.patika04.dao.EmployeeDAO;
 import dev.patika.patika04.dao.EmployeeDAOJPAImpl;
 import dev.patika.patika04.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService<Employee> {
     EmployeeDAO employeeDAO;
 
     //@Autowired
-    public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
+    public EmployeeServiceImpl(@Qualifier("employeeDAOHibernateImpl") EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
     }
 

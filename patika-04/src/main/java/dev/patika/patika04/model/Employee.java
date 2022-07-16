@@ -33,7 +33,7 @@ public class Employee {
         this.fullname = fullname;
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public double getSalary() {
         return salary;
     }
