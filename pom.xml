@@ -13,5 +13,8 @@
     <modules>
         <module>patika-01</module>
         <module>patika-03</module>
+        <module>patika-04</module>
+        <module>patika-05</module>
+        <module>patika-06</module>
     </modules>
 </project>

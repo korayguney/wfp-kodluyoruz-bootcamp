@@ -2,23 +2,38 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="patika-01" />
+        <module name="patika-07" />
+        <module name="patika-05" />
+        <module name="patika-06" />
         <module name="patika-03" />
+        <module name="patika-04" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="patika-01" target="8" />
       <module name="patika-03" target="1.8" />
+      <module name="patika-04" target="1.8" />
+      <module name="patika-05" target="1.8" />
+      <module name="patika-06" target="1.8" />
+      <module name="patika-07" target="1.8" />
+      <module name="patika-test" target="1.8" />
       <module name="wfp-kodluyoruz-bootcamp" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="patika-03" options="-parameters" />
+      <module name="patika-04" options="-parameters" />
+      <module name="patika-05" options="-parameters" />
+      <module name="patika-06" options="-parameters" />
+      <module name="patika-07" options="-parameters" />
+      <module name="patika-test" options="-parameters" />
     </option>
   </component>
 </project>
