@@ -5,10 +5,7 @@ import dev.patika.patika04.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +33,22 @@ public class EmployeeController {
     @PostMapping("/employees")
     public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
         return new ResponseEntity<>((Employee) employeeService.save(employee), HttpStatus.OK);
+    }
+
+    @GetMapping("/employees/{id}")
+    public Employee getEmployeeById(@PathVariable int id) {
+        return (Employee) employeeService.findById(id);
+    }
+
+    @PutMapping("/employees")
+    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
+        return new ResponseEntity<>((Employee) employeeService.update(employee), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployeeById(@PathVariable int id) {
+        employeeService.deleteById(id);
+        return "Deleted...";
     }
 
 }

@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService<Employee> {
     EmployeeDAO employeeDAO;
 
     //@Autowired
-    public EmployeeServiceImpl(@Qualifier("employeeDAOHibernateImpl") EmployeeDAO employeeDAO) {
+    public EmployeeServiceImpl(@Qualifier("employeeDAOJPAImpl") EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
     }
 
@@ -26,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService<Employee> {
 
     @Override
     public Employee findById(int id) {
-        return null;
+        return (Employee) employeeDAO.findById(id);
     }
 
     @Override
@@ -36,11 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService<Employee> {
 
     @Override
     public void deleteById(int id) {
-
+        employeeDAO.deleteById(id);
     }
 
     @Override
     public Employee update(Employee employee) {
-        return null;
+        return (Employee) employeeDAO.update(employee);
     }
 }

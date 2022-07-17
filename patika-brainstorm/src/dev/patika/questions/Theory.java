@@ -16,9 +16,11 @@ public class Theory {
 
  //      Which are true? (Choose all that apply.)
  //      A. Compilation fails
+
  //      B. The first line of output is abc abc true
  //      C. The first line of output is abc abc false
  //      D. The first line of output is abcd abc false
+
  //      E. The second line of output is abcd abc false
  //      F. The second line of output is abcd abcd true
  //      G. The second line of output is abcd abcd false

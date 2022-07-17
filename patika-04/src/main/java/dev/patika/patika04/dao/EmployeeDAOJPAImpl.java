@@ -27,7 +27,7 @@ public class EmployeeDAOJPAImpl implements EmployeeDAO<Employee>{
 
     @Override
     public Employee findById(int id) {
-        return null;
+        return entityManager.find(Employee.class, Long.valueOf(id));
     }
 
     @Override
@@ -42,12 +42,15 @@ public class EmployeeDAOJPAImpl implements EmployeeDAO<Employee>{
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-
+        Employee foundEmployee = this.findById(id);
+        entityManager.remove(foundEmployee);
     }
 
     @Override
-    public Employee update(Employee object) {
-        return null;
+    @Transactional
+    public Employee update(Employee employee) {
+        return entityManager.merge(employee);
     }
 }
