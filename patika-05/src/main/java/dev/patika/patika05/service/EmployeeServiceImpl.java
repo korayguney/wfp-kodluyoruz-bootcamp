@@ -67,4 +67,9 @@ public class EmployeeServiceImpl {
     public List<Employee> findTopBySalaryIsGreaterThan(double salary) {
         return employeeRepository.findTopBySalaryIsGreaterThan(salary);
     }
+
+    @Transactional
+    public void deleteByFullname(String fullname) {
+        employeeRepository.deleteByFullname(fullname);
+    }
 }

@@ -22,6 +22,8 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
     List<Employee> findBySalaryIsGreaterThan(double salary);
     List<Employee> findTopBySalaryIsGreaterThan(double salary);
 
+    void deleteByFullname(String fullname);
+
 
 
 }

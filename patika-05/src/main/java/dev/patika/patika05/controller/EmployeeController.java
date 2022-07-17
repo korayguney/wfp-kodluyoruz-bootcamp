@@ -41,6 +41,12 @@ public class EmployeeController {
         return "Deleted...";
     }
 
+    @DeleteMapping("/employees/delete/{fullname}")
+    public String deleteEmployeeById(@PathVariable String fullname) {
+        employeeService.deleteByFullname(fullname);
+        return "Deleted...";
+    }
+
     @GetMapping("/employees/count")
     public int getAllEmployeeCount() {
         return employeeService.getAllEmployeeCount();
