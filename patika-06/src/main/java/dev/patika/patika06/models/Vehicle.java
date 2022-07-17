@@ -1,6 +1,8 @@
 package dev.patika.patika06.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,11 +23,11 @@ public class Vehicle {
     private String model;
     private String plate;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToMany
     private List<Accident> accidents = new ArrayList<>();
 

@@ -20,7 +20,7 @@ public class Customer {
     private String address;
     private long ssid;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Vehicle> vehicleList = new ArrayList<>();
 
     public Customer(String name, String address, long ssid) {
