@@ -42,4 +42,29 @@ public class EmployeeServiceImpl {
     public void deleteById(Long id) {
         employeeRepository.deleteById(id);
     }
+
+    @Transactional(readOnly = true)
+    public int getAllEmployeeCount() {
+        return employeeRepository.getNumberOfEmployeeNumber();
+    }
+
+    public List<?> getSalariesWithGrouping() {
+        return employeeRepository.getSalariesWithGrouping();
+    }
+
+    public List<Employee> findByFullname(String fullname) {
+        return employeeRepository.findByFullname(fullname);
+    }
+
+    public List<Employee> findByFullnameContaining(String str) {
+        return employeeRepository.findByFullnameContaining(str);
+    }
+
+    public List<Employee> findBySalaryIsGreaterThan(double salary) {
+        return employeeRepository.findBySalaryIsGreaterThan(salary);
+    }
+
+    public List<Employee> findTopBySalaryIsGreaterThan(double salary) {
+        return employeeRepository.findTopBySalaryIsGreaterThan(salary);
+    }
 }

@@ -3,7 +3,6 @@ package dev.patika.patika05.controller;
 import dev.patika.patika05.model.Employee;
 import dev.patika.patika05.service.EmployeeServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +39,36 @@ public class EmployeeController {
     public String deleteEmployeeById(@PathVariable Long id) {
         employeeService.deleteById(id);
         return "Deleted...";
+    }
+
+    @GetMapping("/employees/count")
+    public int getAllEmployeeCount() {
+        return employeeService.getAllEmployeeCount();
+    }
+
+    @GetMapping("/employees/salarygroup")
+    public List<?> getSalariesWithGrouping() {
+        return employeeService.getSalariesWithGrouping();
+    }
+
+    @GetMapping("/employees/findByFullname")
+    public List<Employee> findByFullname(String fullname) {
+        return employeeService.findByFullname(fullname);
+    }
+
+    @GetMapping("/employees/findByFullnameContaining")
+    public List<Employee> findByFullnameContaining(String str) {
+        return employeeService.findByFullnameContaining(str);
+    }
+
+    @GetMapping("/employees/findBySalaryIsGreaterThan")
+    public List<Employee> findBySalaryIsGreaterThan(double salary) {
+        return employeeService.findBySalaryIsGreaterThan(salary);
+    }
+
+    @GetMapping("/employees/findTopBySalaryIsGreaterThan")
+    public List<Employee> findTopBySalaryIsGreaterThan(double salary) {
+        return employeeService.findTopBySalaryIsGreaterThan(salary);
     }
 
 
