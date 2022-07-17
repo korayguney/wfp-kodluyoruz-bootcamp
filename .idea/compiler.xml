@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="patika-01" />
         <module name="patika-05" />
+        <module name="patika-06" />
         <module name="patika-03" />
         <module name="patika-04" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="patika-03" target="1.8" />
       <module name="patika-04" target="1.8" />
       <module name="patika-05" target="1.8" />
+      <module name="patika-06" target="1.8" />
       <module name="patika-test" target="1.8" />
       <module name="wfp-kodluyoruz-bootcamp" target="1.5" />
     </bytecodeTargetLevel>
@@ -27,6 +29,7 @@
       <module name="patika-03" options="-parameters" />
       <module name="patika-04" options="-parameters" />
       <module name="patika-05" options="-parameters" />
+      <module name="patika-06" options="-parameters" />
       <module name="patika-test" options="-parameters" />
     </option>
   </component>
