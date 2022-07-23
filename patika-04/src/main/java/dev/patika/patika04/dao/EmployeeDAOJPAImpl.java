@@ -19,7 +19,7 @@ public class EmployeeDAOJPAImpl implements EmployeeDAO<Employee>{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, timeout = 100)
     public List<Employee> findAll() {
         System.out.println("EmployeeDAOJPAImpl is used...");
         return entityManager.createQuery("from Employee", Employee.class).getResultList();
