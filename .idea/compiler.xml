@@ -12,6 +12,7 @@
         <module name="patika-06" />
         <module name="patika-03" />
         <module name="patika-04" />
+        <module name="patika-09" />
         <module name="patika-07" />
         <module name="patika-08" />
       </profile>
@@ -24,6 +25,7 @@
       <module name="patika-06" target="1.8" />
       <module name="patika-07" target="1.8" />
       <module name="patika-08" target="1.8" />
+      <module name="patika-09" target="1.8" />
       <module name="patika-test" target="1.8" />
       <module name="wfp-kodluyoruz-bootcamp" target="1.5" />
     </bytecodeTargetLevel>
@@ -36,6 +38,7 @@
       <module name="patika-06" options="-parameters" />
       <module name="patika-07" options="-parameters" />
       <module name="patika-08" options="-parameters" />
+      <module name="patika-09" options="-parameters" />
       <module name="patika-test" options="-parameters" />
     </option>
   </component>
