@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
+    // JPQL
     @Query("select count(e) from Employee e")
     public int getNumberOfEmployeeNumber();
 
