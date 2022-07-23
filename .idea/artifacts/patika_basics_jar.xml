@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="patika-basics:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/patika_basics_jar</output-path>
+    <root id="archive" name="patika-basics.jar">
+      <element id="module-output" name="patika-basics" />
+    </root>
+  </artifact>
+</component>

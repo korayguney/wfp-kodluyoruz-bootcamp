@@ -2,6 +2,7 @@ package dev.patika.patika04.service;
 
 import dev.patika.patika04.dao.EmployeeDAO;
 import dev.patika.patika04.dao.EmployeeDAOJPAImpl;
+import dev.patika.patika04.exception.EmployeeAlreadyExistException;
 import dev.patika.patika04.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
